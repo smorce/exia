@@ -1,3 +1,7 @@
+## タスク
+- VOICEVOX のところを OpenAI TTS API に変更する
+- `public/audios/voices` 配下に wav ファイルを配置すればOKのはず
+
 <div align="center">
   <img src="https://github.com/kokushin/exia/assets/4176300/f339f967-712e-4967-9de9-52962d8d74f6" width="240" alt="©Proxima Beta Pte. Limited ©SHIFT UP CORP.">
   <h1>Exia</h1>
