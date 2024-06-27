@@ -1,100 +1,137 @@
 {
   "id": "S_000",
-  "backgroundFile": "bg_01.webp",
+  "backgroundFile": "bg_01.png",
   "currentLineIndex": 0,
   "characters": [
     {
       "index": 0,
-      "name": "キャラA",
-      "imageFile": "chara_01.webp",
-      "isShow": true,
-      "speakerId": 3
+      "name": "ロゼ",
+      "imageFile": "chara_01.png",
+      "isShow": true
     },
     {
       "index": 1,
-      "name": "キャラB",
-      "imageFile": "chara_02.webp",
-      "isShow": true,
-      "speakerId": 2
+      "name": "デイジー",
+      "imageFile": "chara_02.png",
+      "isShow": true
     }
   ],
   "lines": [
     {
       "type": 0,
-      "text": "説明テキスト"
+      "text": "行列積（MatMul）を使わない言語モデル「MatMul-free LM」ゆっくり解説"
     },
     {
       "character": {
         "index": 0
       },
-      "type": 0,
-      "text": "キャラクター移動"
-    },
-    {
-      "character": {
-        "index": 0,
-        "imageFile": "chara_01.webp"
-      },
       "type": 1,
-      "text": "キャラクターのセリフ1"
-    },
-    {
-      "cutIn": {
-        "imageFile": "cut_01.webp"
-      },
-      "type": 0,
-      "text": "カットイン表示"
-    },
-    {
-      "type": 0,
-      "text": "カットイン非表示"
-    },
-    {
-      "cutIn": {
-        "imageFile": "cg_01.webp",
-        "isFullScreen": true
-      },
-      "type": 0,
-      "text": "CG表示"
-    },
-    {
-      "cutIn": {
-        "imageFile": "cg_01.webp",
-        "isFullScreen": true
-      },
-      "character": {
-        "index": 1
-      },
-      "type": 1,
-      "text": "CG中のキャラクターのセリフ"
+      "text": "今回は、論文「Scalable MatMul-free Language Modeling」を見ていくよ！"
     },
     {
       "character": {
         "index": 1
       },
-      "type": 0,
-      "text": "CG非表示"
+      "type": 1,
+      "text": "難しいこと書いてそうだな。論文ってタイトルからして難解なんだよなぁ。"
     },
     {
       "character": {
-        "index": 1,
-        "imageFile": "chara_02.webp"
+        "index": 0
       },
       "type": 1,
-      "text": "キャラクターのセリフ2<br>改行<br><span style=\"font-size:24px\">テキストの大きさ変更</span>"
+      "text": "タイトル通り、行列積（MatMul）を使わずに言語モデルを作る研究だね。MatMulは、最近の言語モデル、特にTransformerで使われている重要な演算なんだけど、計算コストが高いのがネックなんだ。"
     },
     {
       "character": {
-        "index": 0,
-        "name": "キャラA(真の姿)",
-        "imageFile": "chara_01.webp"
+        "index": 1
       },
       "type": 1,
-      "text": "キャラクターのセリフ3"
+      "text": "なるほどなぁ。で、どう解決するんだ？"
     },
     {
-      "type": 0,
-      "text": "デバッグ終了"
+      "character": {
+        "index": 0
+      },
+      "type": 1,
+      "text": "そこで、この論文ではMatMul-free LMという新しいアーキテクチャを提案しているんだ。このモデルは、MatMulの代わりに、加算や要素ごとの積などの軽量な演算を使って計算を行うことで、計算コストとメモリ使用量を大幅に削減しているのが特徴だよ。"
+    },
+    {
+      "character": {
+        "index": 1
+      },
+      "type": 1,
+      "text": "へぇー、具体的にどんな仕組みなんだ？"
+    },
+    {
+      "character": {
+        "index": 0
+      },
+      "type": 1,
+      "text": "MatMul-free LMは、大きく分けてトークンミキサーとチャンネルミキサーの2つの部分から構成されているんだ。 トークンミキサーは、時系列データの関係性を捉える部分で、従来のTransformerではSelf-Attentionが使われていたんだけど、MatMul-free LMではMatMul-free Linear Gated Recurrent Unit (MLGRU)という独自の機構を使うことでMatMulを排除しているんだ。"
+    },
+    {
+      "character": {
+        "index": 1
+      },
+      "type": 1,
+      "text": "ふむふむ。チャンネルミキサーは何をするんだ？"
+    },
+    {
+      "character": {
+        "index": 0
+      },
+      "type": 1,
+      "text": "チャンネルミキサーは、埋め込み次元間で情報を統合する部分だね。こちらは、Gated Linear Unit (GLU)⁸という機構に、BitLinearと呼ばれる三値重みを使った密層を組み合わせることで実現しているんだ。"
+    },
+    {
+      "character": {
+        "index": 1
+      },
+      "type": 1,
+      "text": "三値重み？"
+    },
+    {
+      "character": {
+        "index": 0
+      },
+      "type": 1,
+      "text": "そう、重みを{-1, 0, +1}の3つの値に量子化することで、乗算を足し算と符号反転だけで表現できるようになるんだ。これによって計算が軽くなるってわけ。"
+    },
+    {
+      "character": {
+        "index": 1
+      },
+      "type": 1,
+      "text": "なるほどなぁ。で、性能はどうなんだ？"
+    },
+    {
+      "character": {
+        "index": 0
+      },
+      "type": 1,
+      "text": "MatMul-free LMは、最大27億パラメータの規模まで実験で確認されていて、従来のTransformerと同等レベルの性能を達成している。さらに、推論時のメモリ使用量とレイテンシを大幅に削減できることも確認されているよ⁴。"
+    },
+    {
+      "character": {
+        "index": 1
+      },
+      "type": 1,
+      "text": "すごいな！でも、まだ課題もあるんだろ？"
+    },
+    {
+      "character": {
+        "index": 0
+      },
+      "type": 1,
+      "text": "もちろん。現状では、1000億パラメータを超えるような超巨大言語モデルでMatMul-free LMがどうなるかはまだ検証されていないんだ。今後の研究で、さらに大規模なモデルで検証していく必要があるね。"
+    },
+    {
+      "character": {
+        "index": 1
+      },
+      "type": 1,
+      "text": "今後の発展に期待だな！"
     }
   ]
 }
